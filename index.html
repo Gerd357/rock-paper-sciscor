@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // generate a random number between 1 and 3 extremes included
+        function randomNumber(){    
+            return Math.floor(Math.random() *((3 - 2) -1) +1 );
+        }
+
+        //generate sign based on random number
+
+        function handSign(number){
+            let handSign;
+            if (number === 1){
+                
+                return "rock";
+            }
+            else(number === 2)
+                return "paper";
+            
+            
+            return "sciscor";
+        }
+
+        //find out who won
+
+        function victoryConditions(stringPlayer, stringComputer){
+            if ((stringplayer === "paper" & stringComputer === "rock") || (stringPlayer === "rock" & stringComputer === "sciscor") || (stringplayer === "sciscor" & stringComputer === "paper" )){
+                return "player wins";
+            }
+            else (stringplayer === stringComputer)
+                return "draw";
+                
+
+            return "loss"
+        }
+        
+        //ask sign from player
+
+        function askSign() {
+
+            let sign;
+            sign = prompt("what is your hand sign ?");
+            return sign;
+
+        }
+
+        //ask number of games from player
+        
+        function numberOfGames() {
+            let number = prompt("how many games do you want to play ?");
+            return number;
+        }
+
+        //variables
+        let gamesWanted = numberOfGames();
+        let counter = 0;
+
+        while (counter < gamesWanted ){
+            //ask player sign
+            let stringPlayer;
+            stringPlayer = askSign();
+            console.log(stringPLayer);
+            //generate number to asign hand sing to computer
+            let number;
+            number = randomNumber(); 
+            //asign sign based on number
+            let stringComputer = handSign(randomNumber);
+            //show who won
+            victoryConditions(stringPlayer, stringComputer);
+            counter++;
+        }
+
+
+
+    </script>
+</body>
+</html>
