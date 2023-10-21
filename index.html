@@ -10,32 +10,39 @@
 
         // generate a random number between 1 and 3 extremes included
         function randomNumber(){    
-            return Math.floor(Math.random() *((3 - 2) -1) +1 );
+            return Math.floor(Math.random() * 3);
         }
 
         //generate sign based on random number
 
-        function handSign(number){
-            let handSign;
-            if (number === 1){
+        function handSign(_number){
+            let number = _number;
+            if (number === 0){
                 
                 return "rock";
             }
-            else(number === 2)
+            else if (number === 1){
                 return "paper";
+            }
             
-            
-            return "sciscor";
+            else {
+                return "sciscor";
+            }
         }
 
         //find out who won
 
-        function victoryConditions(stringPlayer, stringComputer){
-            if ((stringplayer === "paper" & stringComputer === "rock") || (stringPlayer === "rock" & stringComputer === "sciscor") || (stringplayer === "sciscor" & stringComputer === "paper" )){
-                return "player wins";
+        function victoryConditions(_stringPlayer, _stringComputer){
+            
+            let stringPlayer = _stringPlayer;
+            let stringComputer = _stringComputer
+            
+            if ((stringPlayer === "paper" & stringComputer === "rock") || (stringPlayer === "rock" & stringComputer === "sciscor") || (stringPlayer === "sciscor" & stringComputer === "paper" )){
+                return "win";
             }
-            else (stringplayer === stringComputer)
+            else if (stringPlayer === stringComputer){
                 return "draw";
+            }
                 
 
             return "loss"
@@ -45,8 +52,7 @@
 
         function askSign() {
 
-            let sign;
-            sign = prompt("what is your hand sign ?");
+            let sign = prompt("what is your hand sign ?");
             return sign;
 
         }
@@ -61,19 +67,24 @@
         //variables
         let gamesWanted = numberOfGames();
         let counter = 0;
+        let stringPlayer;
+        let number;
+        let stringComputer;
+        let result;
+
 
         while (counter < gamesWanted ){
             //ask player sign
-            let stringPlayer;
             stringPlayer = askSign();
-            console.log(stringPLayer);
             //generate number to asign hand sing to computer
-            let number;
-            number = randomNumber(); 
+            number = randomNumber();
             //asign sign based on number
-            let stringComputer = handSign(randomNumber);
+            stringComputer = handSign(number);
             //show who won
-            victoryConditions(stringPlayer, stringComputer);
+            result = victoryConditions(stringPlayer, stringComputer);
+            console.log(stringPlayer + " vs " + stringComputer);
+            console.log(result);
+
             counter++;
         }
 
